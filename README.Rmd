@@ -51,8 +51,11 @@ grid %>%
   mutate(colour = sample(colours, 1)) %>%
   ungroup() %>%
   plot_grid()
+```
 
-# Cubic ----
+# Cubic
+
+```{r}
 
 grid %>%
   mutate(noise = gen_cubic(x, y, seed = 1234)) %>%
@@ -168,3 +171,150 @@ grid %>%
   colour_from_noise() %>%
   plot_grid()
 ```
+
+# Spheres
+
+```{r}
+grid %>%
+  mutate(noise = gen_spheres(x, y, seed = 1234, frequency = 1)) %>%
+  colour_from_noise() %>%
+  plot_grid()
+
+grid %>%
+  mutate(noise = gen_spheres(x, y, seed = 1234, frequency = 0.75)) %>%
+  colour_from_noise() %>%
+  plot_grid()
+
+grid %>%
+  mutate(noise = gen_spheres(x, y, seed = 1234, frequency = 0.5)) %>%
+  colour_from_noise() %>%
+  plot_grid()
+
+grid %>%
+  mutate(noise = gen_spheres(x, y, seed = 1234, frequency = 0.25)) %>%
+  colour_from_noise() %>%
+  plot_grid()
+
+grid %>%
+  mutate(noise = gen_spheres(x, y, seed = 1234, frequency = 0.1)) %>%
+  colour_from_noise() %>%
+  plot_grid()
+
+grid %>%
+  mutate(noise = gen_spheres(x, y, seed = 1234, frequency = 0.075)) %>%
+  colour_from_noise() %>%
+  plot_grid()
+
+grid %>%
+  mutate(noise = gen_spheres(x, y, seed = 1234, frequency = 0.05)) %>%
+  colour_from_noise() %>%
+  plot_grid()
+
+grid %>%
+  mutate(noise = gen_spheres(x, y, seed = 1234, frequency = 0.01)) %>%
+  colour_from_noise() %>%
+  plot_grid()
+```
+
+# Waves
+
+```{r}
+grid %>%
+  mutate(noise = gen_waves(x, y, seed = 1234, frequency = 1)) %>%
+  colour_from_noise() %>%
+  plot_grid()
+
+grid %>%
+  mutate(noise = gen_waves(x, y, seed = 1234, frequency = 0.75)) %>%
+  colour_from_noise() %>%
+  plot_grid()
+
+grid %>%
+  mutate(noise = gen_waves(x, y, seed = 1234, frequency = 0.5)) %>%
+  colour_from_noise() %>%
+  plot_grid()
+
+grid %>%
+  mutate(noise = gen_waves(x, y, seed = 1234, frequency = 0.25)) %>%
+  colour_from_noise() %>%
+  plot_grid()
+
+grid %>%
+  mutate(noise = gen_waves(x, y, seed = 1234, frequency = 0.1)) %>%
+  colour_from_noise() %>%
+  plot_grid()
+
+grid %>%
+  mutate(noise = gen_waves(x, y, seed = 1234, frequency = 0.075)) %>%
+  colour_from_noise() %>%
+  plot_grid()
+
+grid %>%
+  mutate(noise = gen_waves(x, y, seed = 1234, frequency = 0.05)) %>%
+  colour_from_noise() %>%
+  plot_grid()
+
+grid %>%
+  mutate(noise = gen_waves(x, y, seed = 1234, frequency = 0.01)) %>%
+  colour_from_noise() %>%
+  plot_grid()
+```
+
+# White
+
+```{r}
+grid %>%
+  mutate(noise = gen_white(x, y, seed = 1234, frequency = 1)) %>%
+  colour_from_noise() %>%
+  plot_grid()
+
+grid %>%
+  mutate(noise = gen_white(x, y, seed = 1234, frequency = 0.00001)) %>%
+  colour_from_noise() %>%
+  plot_grid()
+```
+
+# Worley
+
+```{r}
+grid %>%
+  mutate(noise = gen_worley(x, y, seed = 1234, frequency = 1)) %>%
+  colour_from_noise() %>%
+  plot_grid()
+
+grid %>%
+  mutate(noise = gen_worley(x, y, seed = 1234, frequency = 0.75)) %>%
+  colour_from_noise() %>%
+  plot_grid()
+
+grid %>%
+  mutate(noise = gen_worley(x, y, seed = 1234, frequency = 0.5)) %>%
+  colour_from_noise() %>%
+  plot_grid()
+
+grid %>%
+  mutate(noise = gen_worley(x, y, seed = 1234, frequency = 0.25)) %>%
+  colour_from_noise() %>%
+  plot_grid()
+
+grid %>%
+  mutate(noise = gen_worley(x, y, seed = 1234, frequency = 0.1)) %>%
+  colour_from_noise() %>%
+  plot_grid()
+
+grid %>%
+  mutate(noise = gen_waves(x, y, seed = 1234, frequency = 0.075)) %>%
+  colour_from_noise() %>%
+  plot_grid()
+
+grid %>%
+  mutate(noise = gen_worley(x, y, seed = 1234, frequency = 0.05)) %>%
+  colour_from_noise() %>%
+  plot_grid()
+
+grid %>%
+  mutate(noise = gen_worley(x, y, seed = 1234, frequency = 0.01)) %>%
+  colour_from_noise() %>%
+  plot_grid()
+```
+
