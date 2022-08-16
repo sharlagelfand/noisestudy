@@ -402,10 +402,22 @@
 
 ![](README_files/figure-markdown_strict/unnamed-chunk-9-8.png)
 
-    grid <- crossing(x = 1:100, y = 1:100)
+# Adding noise to one colour
 
-    ggplot(grid) + 
-      geom_point(aes(x = x, y = y), shape = 15, size = 0.8) + 
+    library(prismatic)
+
+    grid <- crossing(x = 1:200, y = 1:200)
+
+    x <- grid %>%
+      mutate(noise = gen_simplex(x, y, seed = 1234, frequency = 1))
+
+    grid_colours <- clr_darken(rep(colours[["red"]], nrow(x)), shift = x$noise * 0.25, "HSL")
+
+    x$colour <- grid_colours
+
+    ggplot() +
+      geom_point(data = x, aes(x = x, y = y, colour = colour), shape = 15, size = 0.75) + 
+      scale_colour_identity() + 
       coord_fixed() + 
       theme_void()
 
