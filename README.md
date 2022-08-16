@@ -27,7 +27,7 @@
       lightgreen = "#C1F213"
     )
 
-    grid <- crossing(x = 1:30, y = 1:30)
+    grid <- crossing(x = -15:15, y = -15:15)
 
     plot_grid <- function(data) {
       data %>%
@@ -401,3 +401,12 @@
       plot_grid()
 
 ![](README_files/figure-markdown_strict/unnamed-chunk-9-8.png)
+
+    grid <- crossing(x = 1:100, y = 1:100)
+
+    ggplot(grid) + 
+      geom_point(aes(x = x, y = y), shape = 15, size = 0.8) + 
+      coord_fixed() + 
+      theme_void()
+
+![](README_files/figure-markdown_strict/unnamed-chunk-10-1.png)
