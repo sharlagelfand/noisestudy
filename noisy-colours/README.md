@@ -103,7 +103,7 @@
 # Perlin
 
     grid %>%
-      plot_noisy_colour("perlin", 1)
+      plot_noisy_colour("perlin", 0.99)
 
 ![](README_files/figure-markdown_strict/perlin-1.png)
 
@@ -231,7 +231,7 @@
 # White
 
     grid %>%
-      plot_noisy_colour("white", 1)
+      plot_noisy_colour("white", 0.99)
 
 ![](README_files/figure-markdown_strict/white-1.png)
 

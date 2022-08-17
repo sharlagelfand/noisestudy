@@ -14,5 +14,17 @@ generate_noise <- function(data, noise, frequency, seed = 1234) {
       mutate(noise = gen_white(x, y, seed = seed, frequency = frequency)),
     worley = data %>%
       mutate(noise = gen_worley(x, y, seed = seed, frequency = frequency))
-  )
+  ) %>%
+    normalise_noise()
+}
+
+normalise_noise <- function(data) {
+  noise_values <- unique(data$noise)
+
+  if (length(noise_values) > 1) {
+    data <- data %>%
+      mutate(noise = normalise(noise))
+  }
+
+  data
 }
