@@ -4,7 +4,7 @@ output: md_document
 
 ```{r setup}
 library(prismatic)
-library(dplyr)
+library(dplyr, warn.conflicts = FALSE)
 library(ambient)
 library(tidyr)
 library(ggplot2)
@@ -41,9 +41,9 @@ plot_grid <- function(data) {
     theme_void()
 }
 
-plot_noisy_colour <- function(data, noise, frequency, seed = 1234, colour = colours[["red"]]) {
+plot_noisy_colour <- function(data, noise, frequency, seed = 1234, colour = colours[["red"]], normalise = FALSE) {
   data %>%
-    generate_noise(noise, frequency, seed) %>%
+    generate_noise(noise, frequency, seed, normalise) %>%
     shift_colour_from_noise(colour) %>%
     plot_grid()
 }
@@ -88,7 +88,7 @@ grid %>%
 
 ```{r perlin}
 grid %>%
-  plot_noisy_colour("perlin", 1)
+  plot_noisy_colour("perlin", 0.99)
 
 grid %>%
   plot_noisy_colour("perlin", 0.5)
@@ -176,7 +176,7 @@ grid %>%
 
 ```{r white}
 grid %>%
-  plot_noisy_colour("white", 1)
+  plot_noisy_colour("white", 0.99)
 
 grid %>%
   plot_noisy_colour("white", 0.5)

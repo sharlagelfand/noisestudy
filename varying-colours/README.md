@@ -37,9 +37,9 @@
         theme_void()
     }
 
-    plot_noise_colours <- function(data, noise, frequency, seed = 1234) {
+    plot_noise_colours <- function(data, noise, frequency, seed = 1234, normalise = FALSE) {
       data %>%
-        generate_noise(noise, frequency, seed) %>%
+        generate_noise(noise, frequency, seed, normalise) %>%
         colour_from_noise() %>%
         plot_grid()
     }
