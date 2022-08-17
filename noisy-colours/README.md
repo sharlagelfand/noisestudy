@@ -1,17 +1,5 @@
     library(prismatic)
-    library(dplyr)
-
-    ## 
-    ## Attaching package: 'dplyr'
-
-    ## The following objects are masked from 'package:stats':
-    ## 
-    ##     filter, lag
-
-    ## The following objects are masked from 'package:base':
-    ## 
-    ##     intersect, setdiff, setequal, union
-
+    library(dplyr, warn.conflicts = FALSE)
     library(ambient)
     library(tidyr)
     library(ggplot2)
@@ -48,9 +36,9 @@
         theme_void()
     }
 
-    plot_noisy_colour <- function(data, noise, frequency, seed = 1234, colour = colours[["red"]]) {
+    plot_noisy_colour <- function(data, noise, frequency, seed = 1234, colour = colours[["red"]], normalise = FALSE) {
       data %>%
-        generate_noise(noise, frequency, seed) %>%
+        generate_noise(noise, frequency, seed, normalise) %>%
         shift_colour_from_noise(colour) %>%
         plot_grid()
     }
