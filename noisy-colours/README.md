@@ -1,11 +1,22 @@
 
 ``` r
+knitr::opts_chunk$set(cache = TRUE)
+
 library(prismatic)
 library(dplyr, warn.conflicts = FALSE)
+```
+
+    ## Warning: package 'dplyr' was built under R version 4.1.2
+
+``` r
 library(ambient)
 library(tidyr)
 library(ggplot2)
+```
 
+    ## Warning: package 'ggplot2' was built under R version 4.1.2
+
+``` r
 source(here::here("generate_noise.R"))
 
 colours <- c(
@@ -280,6 +291,43 @@ grid %>%
 ```
 
 ![](README_files/figure-gfm/waves-6.png)<!-- -->
+
+## Waves but in a way I figured out
+
+``` r
+waves_grid <- crossing(
+  x = seq(4800, 4800 + 400, by = 0.5),
+  y = seq(8200, 8200 + 400, by = 0.5)
+)
+
+original_colour <- "#33810b"
+darker_version <- prismatic::clr_darken(original_colour, shift = 0.25, "HSL")
+lighter_version <- original_colour %>%
+  prismatic::clr_darken(-0.75, "HSL") %>%
+  prismatic::clr_desaturate(0.25)
+
+palette <- colorRampPalette(c(lighter_version, darker_version))(80)
+
+option_from_noise <- function(data, options) {
+  data %>%
+    # bin into groups and choose colour from there
+    dplyr::mutate(
+      option_number = dplyr::ntile(noise, length(options)),
+      option = options[option_number]
+    )
+}
+
+waves_grid %>%
+  generate_noise("waves", 0.75, seed = 75, normalise = FALSE) %>%
+  option_from_noise(palette) %>%
+  ggplot() +
+  geom_tile(aes(x = x, y = y, width = 0.5, height = 0.5, fill = option)) +
+  scale_fill_identity() +
+  theme_void() +
+  coord_fixed()
+```
+
+![](README_files/figure-gfm/fabric-waves-1.png)<!-- -->
 
 # White
 
